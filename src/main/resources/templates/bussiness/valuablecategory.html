@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Category List</title>
+	<link rel="icon" type="image/png" href="/images/pageicon.png" sizes="128x128">
+	<link  rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<header>
+		<div th:replace="fragments/navbar :: navbar">
+		</div>
+	</header>
+	<div class="container">
+		<div class="row">
+			<div th:each="interaction:${interactions}" class="col-6 col-md-4 col-xl-3">
+				<div class="card" >
+				  <div class="card-body">
+				    <h5 th:text="${interaction.type.name}" class="card-title text-dark font-monospace fw-bold">Card title</h5>
+				
+				    <p th:if="${interaction.book.category !=null}" th:text="${interaction.book.category.name}"class="card-text fs-7"></p>
+				 	<p th:if="${interaction.book !=null}" th:text="${interaction.book.title}"class="card-text fs-7"></p>
+
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
