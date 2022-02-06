@@ -151,7 +151,13 @@ public class UserService extends GenericService<User, String> {
 		mongotemplate.updateFirst(query, update,User.class);	
 		
 	}
-
+	public void toggleEnableUser(String id){
+		if(id!=null){
+			User user=repository.findByid(id);
+			user.setEnabled(!user.isEnabled());
+			repository.save(user);
+		}
+	}
 
 
 	

@@ -43,7 +43,8 @@
 							<div class="btn-group" role="group" aria-label="Basic example">
 							  <a sec:authorize="hasAuthority('user:write')" th:href="@{/admin/user/detail/}+${user.id}" type="button" class="btn btn-info"><i class="fa fa-search-minus" aria-hidden="true"></i></a>
 							  <a sec:authorize="hasAuthority('user:write')" th:href="@{/admin/user/edit/}+${user.id}" type="button" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-							  <a sec:authorize="hasAuthority('user:delete')" th:href="@{/admin/user/delete/}+${user.id}" type="button" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+							  <a sec:authorize="hasAuthority('user:write')" th:href="@{user/enable/}+${user.id}" type="button"
+								 th:classappend="${!user.enabled ? 'btn-danger' : 'btn-success'}" class="btn"><i th:classappend="${!user.enabled ? 'fa fa-toggle-off' : 'fa fa-toggle-on'}" class="" aria-hidden="true"></i></a>
 							</div>
 							</td>
 						</span>

@@ -277,6 +277,22 @@ public class AdminController {
 		model.addAttribute("categories", categoryService.getAll());
 		return "admin/saleslist";
 	}
-	
+	@PreAuthorize("hasAuthority('user:write')")
+	@GetMapping("user/enable/{id}")
+	public String disableUser(@PathVariable("id") String id , Model model) {
+		if(id != null && id != "") {
+			userService.toggleEnableUser(id);
+		}
+		return "redirect:/admin/users";
+	}
+
+	@PreAuthorize("hasAuthority('book:write')")
+	@GetMapping("book/enable/{id}")
+	public String disableBook(@PathVariable("id") String id , Model model) {
+		if(id != null && id != "") {
+			bookservice.toggleEnableBook(id);
+		}
+		return "redirect:/admin/books";
+	}
 	
 }
